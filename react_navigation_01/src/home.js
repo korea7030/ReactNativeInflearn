@@ -16,7 +16,11 @@ class HomeScreen extends Component {
                 <Button 
                     title="To User Screen"
                     onPress={() => {
-                        this.props.navigation.navigate('User')
+                        this.props.navigation.navigate('User', {
+                            userIdx: 100,
+                            userName: 'Gildong',
+                            userLastName: 'Hong'
+                        })
                     }}/>
             </View>
         )
