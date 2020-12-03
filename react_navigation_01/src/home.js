@@ -22,6 +22,17 @@ class HomeScreen extends Component {
                             userLastName: 'Hong'
                         })
                     }}/>
+                <Button 
+                    title="Change the title"
+                    onPress={() => 
+                        this.props.navigation.setOptions({
+                            title: 'Changed!!!!!',
+                            headerStyle: {
+                                backgroundColor: 'pink'
+                            },
+                            headerTintColor: 'red'
+                        })}
+                />
             </View>
         )
     }
