@@ -19,7 +19,20 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="User">
+        <Stack.Navigator 
+          initialRouteName="User"
+          // 공통 스타일 적용
+          screenOptions={{
+            headerStyle: {
+                backgroundColor: '#a4511e'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#f3d612'
+            }
+          }}
+        >
           <Stack.Screen 
             name="Home" 
             component={HomeScreen}
