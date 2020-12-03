@@ -8,11 +8,12 @@
 
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/home';
 import UserScreen from './src/user';
+import LogoTitle from './src/logo';
 
 const Stack = createStackNavigator();
 class App extends Component {
@@ -36,7 +37,10 @@ class App extends Component {
           <Stack.Screen 
             name="Home" 
             component={HomeScreen}
-            options={{title: 'Home Screen'}}
+            options={{
+              title: 'Home Screen',
+              headerTitle: <LogoTitle />
+            }}
           />
           <Stack.Screen 
             name="User" 
