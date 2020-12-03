@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator 
-          initialRouteName="User"
+          initialRouteName="Home"
           // 공통 스타일 적용
           screenOptions={{
             headerStyle: {
