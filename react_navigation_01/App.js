@@ -18,6 +18,7 @@ import HomeDrawerScreen from './src/home_drawer';
 import UserDrawerScreen from './src/user_drawer';
 import LogoTitle from './src/logo';
 import { Linking } from 'react-native';
+import img from './src/assets/pics/home.jpg'
 
 const Stack = createStackNavigator();
 // drawnavigator를 쓰게되면 header바는 사라짐.
@@ -31,6 +32,7 @@ class App extends Component {
         <DrawerItem 
           label="help"
           onPress={() => Linking.openURL("http://www.google.com")}
+          icon={() => <LogoTitle />}
         />
 
         <DrawerItem 
@@ -58,7 +60,14 @@ class App extends Component {
           }}
           drawerContent={this.CustomDrawerContent}
         >
-          <Drawer.Screen name="Home" component={HomeDrawerScreen}/>
+          <Drawer.Screen 
+            name="Home" 
+            component={HomeDrawerScreen}
+            options={{
+              drawerIcon: () => {
+                <Image source={img} style={{width: 40, height: 40}}/>
+              }
+            }}/>
           <Drawer.Screen name="User" component={UserDrawerScreen}/>
 
         </Drawer.Navigator>
