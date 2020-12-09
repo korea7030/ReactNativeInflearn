@@ -11,16 +11,27 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './src/home';
 import UserScreen from './src/user';
+import HomeDrawerScreen from './src/home_drawer';
+import UserDrawerScreen from './src/user_drawer';
 import LogoTitle from './src/logo';
 
 const Stack = createStackNavigator();
+// drawnavigator를 쓰게되면 header바는 사라짐.
+// 쓰려면 custom Component를 추가해야함
+const Drawer = createDrawerNavigator();
 class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator 
+        <Drawer.Navigator>
+          <Drawer.Screen name="Home" component={HomeDrawerScreen}/>
+          <Drawer.Screen name="User" component={UserDrawerScreen}/>
+
+        </Drawer.Navigator>
+        {/* <Stack.Navigator 
           initialRouteName="Home"
           // 공통 스타일 적용
           screenOptions={{
@@ -66,7 +77,7 @@ class App extends Component {
             //   }
             // }}
           />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
       </NavigationContainer>
     )
   }
