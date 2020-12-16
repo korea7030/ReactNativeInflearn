@@ -24,6 +24,7 @@ import SideDrawer from './src/my_drawer';
 import TabHome from './src/home_tab';
 import TabUser from './src/user_tab';
 import TabMessage from './src/message_tab';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 // drawnavigator를 쓰게되면 header바는 사라짐.
