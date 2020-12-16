@@ -18,30 +18,31 @@ import HomeDrawerScreen from './src/home_drawer';
 import UserDrawerScreen from './src/user_drawer';
 import LogoTitle from './src/logo';
 import { Linking } from 'react-native';
-import img from './src/assets/pics/home.jpg'
+import img from './src/assets/pics/home.jpg';
+import SideDrawer from './src/my_drawer';
 
 const Stack = createStackNavigator();
 // drawnavigator를 쓰게되면 header바는 사라짐.
 // 쓰려면 custom Component를 추가해야함
 const Drawer = createDrawerNavigator();
 class App extends Component {
-  CustomDrawerContent = (props) => {
-    return (
-      <DrawerContentScrollView {...props} >
-        <DrawerItemList {...props} />
-        <DrawerItem 
-          label="help"
-          onPress={() => Linking.openURL("http://www.google.com")}
-          icon={() => <LogoTitle />}
-        />
+  // CustomDrawerContent = (props) => {
+  //   return (
+  //     <DrawerContentScrollView {...props} >
+  //       <DrawerItemList {...props} />
+  //       <DrawerItem 
+  //         label="help"
+  //         onPress={() => Linking.openURL("http://www.google.com")}
+  //         icon={() => <LogoTitle />}
+  //       />
 
-        <DrawerItem 
-          label="info"
-          onPress={() => alert("info Window")}
-        />
-      </DrawerContentScrollView>
-    )
-  }
+  //       <DrawerItem 
+  //         label="info"
+  //         onPress={() => alert("info Window")}
+  //       />
+  //     </DrawerContentScrollView>
+  //   )
+  // }
   render() {
     return (
       <NavigationContainer>
@@ -58,7 +59,7 @@ class App extends Component {
             activeTintColor: 'red',
             activeBackgroundColor: 'skyblue'
           }}
-          drawerContent={this.CustomDrawerContent}
+          drawerContent={props => <SideDrawer {...props} />}
         >
           <Drawer.Screen 
             name="Home" 
