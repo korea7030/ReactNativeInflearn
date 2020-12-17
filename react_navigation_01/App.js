@@ -9,7 +9,7 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DrawerActions, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,11 +25,17 @@ import TabHome from './src/home_tab';
 import TabUser from './src/user_tab';
 import TabMessage from './src/message_tab';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DrawerUserScreen from './src/user_drawer';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 /*
 Stack.Navigator
- - Tab Navigator
-  - Tab Screen D
+ - Drawer Navigator
+   - Drawer.Screen D
+   - Drawer Screen E
+   - Tab Navigator
+    - Tab Screen F
+    - Tab Screen G
  - Stack.Screen A
  - Stack.Screen B
 */
@@ -39,7 +45,7 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-MainScreen = () => {
+TabComponent = () => {
   return (
     <Tab.Navigator
           initialRouteName="Home"
@@ -85,12 +91,51 @@ const TabBarIcon = (focused, name) => {
     />
   )
 }
+
+const DrawerComponent = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Home"
+      drawerType="front"
+      drawerPosition="right"
+      drawerStyle={{
+        backgroundColor: '#c6cbef',
+        width: 200
+      }}
+      drawerContent={props => <SideDrawer {...props} />}
+    >
+      <Drawer.Screen
+        name="Route" component={TabComponent}
+      />
+    </Drawer.Navigator>
+  )
+}
+
+const HeaderRight = () => {
+  const navigation = useNavigation();
+  return (
+    <View style={{flexDirection: 'row', paddingRight: 15}}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.dispatch(DrawerActions.openDrawer())
+        }}
+      >
+        <Text>Open</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
 class App extends Component {
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen 
+            name="Main" 
+            component={DrawerComponent} 
+            options={{
+              headerRight: ({}) => <HeaderRight />
+            }}/>
           <Stack.Screen name="Home_Stack" component={StackHomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
