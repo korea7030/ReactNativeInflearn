@@ -34,22 +34,22 @@ const Tab = createBottomTabNavigator();
 
 const TabBarIcon = (focused, name) => {
   let iconImagePath;
+  let iconName;
+  let iconSize;
 
   if (name === 'Home') {
-    iconImagePath = require('./src/assets/pics/home.jpg');
+    iconName = 'home-outline'
   } else if (name === 'User') {
-    iconImagePath = require('./src/assets/pics/user.png');
+    iconName = 'people-outline'
   } else if (name === 'Message') {
-    iconImagePath = require('./src/assets/pics/message.png');
+    iconName = 'mail-outline'
   }
 
+  iconSize = focused ? 30 : 20
   return (
-    <Image
-      style={{
-        width: focused? 30: 20,
-        height: focused? 30: 20,
-      }}
-      source = {iconImagePath}
+    <Icon
+      name={iconName}
+      size={iconSize}
     />
   )
 }
@@ -66,7 +66,7 @@ class App extends Component {
             style: {
               backgroundColor: '#c6cbef'
             },
-            labelPosition: 'beside-icon'
+            labelPosition: 'below-icon'
           }}
           screenOptions={({route}) => ({
             tabBarLabel: route.name,
