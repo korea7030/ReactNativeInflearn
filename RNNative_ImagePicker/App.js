@@ -18,6 +18,7 @@ import {
   StatusBar,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker'; 
+import Contacts from 'react-native-contacts';
 
 // var ImagePicker = require('react-native-image-picker');
 

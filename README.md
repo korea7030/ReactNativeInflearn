@@ -32,3 +32,12 @@ $ cd ios && pod install
 
 #### 참고사항
 1. react-native version이 0.61.5 인 경우는 1.1.0 version을 install해야 작동함
+
+### react-native-contacts
+#### install
+```
+$ npm i -s react-native-contacts
+```
+
+#### Usage
+https://github.com/morenoh149/react-native-contacts
