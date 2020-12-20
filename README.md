@@ -41,3 +41,14 @@ $ npm i -s react-native-contacts
 
 #### Usage
 https://github.com/morenoh149/react-native-contacts
+
+### React Native Debugger
+디버깅 가능하게 하는 Program
+#### Install
+https://github.com/jhen0409/react-native-debugger
+
+#### Usage (in Simulator)
+##### ios
+command + d -> Debug click
+##### android
+command + m -> Debug click
