@@ -182,8 +182,8 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-contacts (6.0.3):
-    - React-Core
+  - react-native-contacts (5.2.3):
+    - React
   - react-native-image-picker (1.1.0):
     - React
   - React-RCTActionSheet (0.61.5):
@@ -331,7 +331,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-contacts: 81059c05ae61884092dade66536987274b81aed9
+  react-native-contacts: e342f93e42bbaac13729e551ffa35ad4a5b90a45
   react-native-image-picker: 3637d63fef7e32a230141ab4660d3ceb773c824f
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
