@@ -97,6 +97,25 @@ class App extends Component {
       }
     })
   }
+
+  OpenForm = () => {
+    const newContact = {
+      emailAddresses: [{
+        label: 'work',
+        email: 'aaa@example.com'
+      }],
+      familyName: "CCC",
+      givenName: "GilDong",
+      phoneNumbers: [{
+        label: 'mobile',
+        number: "(010) 1111-1111"
+      }]
+    }
+    // ios 만 지원
+    Contacts.openContactForm({newContact} , (err) => {
+      if (err) console.warn(err)
+    })
+  }
   render () {
     return (
       <View style={styles.container}>
@@ -114,6 +133,11 @@ class App extends Component {
         <Button 
           title="Add Contacts"
           onPress={() => this.addContacts()}
+        />
+
+        <Button 
+          title="Open Form"
+          onPress={() => this.OpenForm()}
         />
       </View>
     )
