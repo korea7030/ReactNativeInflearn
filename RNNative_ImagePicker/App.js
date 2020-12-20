@@ -8,6 +8,8 @@
 
 import React, {Component} from 'react';
 import {
+  Platform,
+  PermissionsAndroid,
   SafeAreaView,
   StyleSheet,
   ScrollView,
@@ -22,45 +24,51 @@ import Contacts from 'react-native-contacts';
 
 // var ImagePicker = require('react-native-image-picker');
 
-class App extends Component {  
-  state = {
-    avatar: ''
+class App extends Component {
+  async requestContactPermission() {
+    if (Platform.OS === 'ios') {
+      console.warn('ios')
+      return true
+    } else {
+      console.warn('android')
+
+      const granted = await PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.WRITE_CONTACTS,
+        PermissionsAndroid.PERMISSIONS.REACD_CONTACTS
+      ]);
+
+      if (
+        granted('android.permission.READ_CONTACTS') === PermissionsAndroid.RESULTS.GRANTED &&
+        granted('android.permission.WRITE_CONTACTS') === PermissionsAndroid.RESULTS.GRANTED
+      ) {
+        return true
+      } else {
+        return false
+      }
+    }
   }
 
-  addImage = () => {
-    // 카메라 실행 및 찍기
-    // ImagePicker.launchCamera({}, response=>{
-    //   this.setState({
-    //     avatar: response.uri
-    //   })
-    // })
-    // 갤러리 라이브러리 불러오기
-    // ImagePicker.launchImageLibrary({}, response=> {
-    //   this.setState({
-    //     avatar: response.uri
-    //   })
-    // })
-    // 사진찍기 및 라이브러리 불러오기
-    ImagePicker.showImagePicker({
-      title: 'CHoose your photo',
-      takePhotoButtonTitle: 'Take a pretty one',
-      chooseFromLibraryButtonTitle: 'Select an old one',
-      cancelButtonTitle: 'Just go back'
-    }, response=> {
-      this.setState({
-        avatar: response.uri
-      })
+  getContacts = () => {
+    this.requestContactPermission()
+    .then((didGetPermission) => {
+      if (didGetPermission) {
+        Contacts.getAll((err, contacts) => {
+          if (err) {
+            throw err;
+          }
+          console.warn(contacts)
+        })
+      } else {
+        alert('no permission')
+      }
     })
   }
   render () {
     return (
       <View style={styles.container}>
-        <Image 
-        source={{uri: this.state.avatar}}
-        style={styles.avatar}/>
         <Button 
-          title="Add an Image"
-          onPress={() => this.addImage()}
+          title="Load Contacts"
+          onPress={() => this.getContacts()}
         />
       </View>
     )
