@@ -52,3 +52,6 @@ https://github.com/jhen0409/react-native-debugger
 command + d -> Debug click
 ##### android
 command + m -> Debug click
+
+### Dimensions
+IOS는 상관없으나, Android의 경우 Dimensions.get('screen') 과 Dimensions.get('window') 의 크기가 다르다

@@ -18,6 +18,7 @@ import {
   Button,
   Text,
   StatusBar,
+  Dimensions
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker'; 
 import Contacts from 'react-native-contacts';
@@ -117,6 +118,8 @@ class App extends Component {
     })
   }
   render () {
+    console.log(Dimensions.get('screen'))
+    console.log(Dimensions.get('window'))
     return (
       <View style={styles.container}>
           {
